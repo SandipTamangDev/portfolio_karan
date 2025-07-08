@@ -3,53 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karan's Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Professional Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="logo">KR</div>
-        <button class="contact-button">Contact</button>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-user-tie"></i>
+                    <span><b><i>Karandhoj Rawal</i></b></span>
+                </a>
+                <div class="nav-links">
+                    <a href="about.html">About</a>
+                    <a href="skills.html#skills">Skills</a>
+                    <a href="portfolio.html#portfolio">Portfolio</a>
+                    <a href="testimonials.html#testimonials">Testimonials</a>
+                    <a href="contact.html#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
-        <h1>Hi, I am Karan</h1>
-        <p>Placeholder subtitle 1</p>
-        <p>Placeholder subtitle 2</p>
-    </section>
-
-    <section class="about">
-        <h2>About Me</h2>
-        <p>Brief description about Karan.</p>
-    </section>
-
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-        </ul>
-    </section>
-
-    <section class="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project Title 1</h3>
-            <p>Short description of project 1.</p>
-            <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Project Title 2</h3>
-            <p>Short description of project 2.</p>
-            <a href="https://github.com/yourusername/project2" target="_blank">View on GitHub</a>
+        <div class="container">
+            <h1>Professional Services That Drive Results</h1>
+            <p>Delivering exceptional solutions tailored to your business needs with over 10 years of industry experience.</p>
+            <a href="#contact" class="btn btn-primary">Get In Touch</a>
         </div>
     </section>
 
-    <section class="contact">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:your-email@gmail.com">your-email@gmail.com</a></p>
-    </section>
+    
+
+  
+
+            <footer>
+        <div class="container">
+            <p>© <span id="2025"></span> karan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Load navigation
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('header').innerHTML = data;
+            });
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if(menuBtn && navLinks) {
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                    menuBtn.innerHTML = navLinks.classList.contains('show') ? 
+                        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                });
+            }
+            
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('show');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+
